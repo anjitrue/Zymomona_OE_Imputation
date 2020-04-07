@@ -13,7 +13,7 @@ namespace ImputeMissing_OverExpression_Values
         static void Main(string[] args)
         {
             //var file = @"H:\Projects\Proteomics\Zymomona\Martein,Julia_NitrogenFixation\R_outputs\EAT_50PercentFilter_NitrogenFixation_DownShiftData_ZM4tag.csv";
-            var file = @"H:\Projects\Proteomics\Zymomona\Martein,Julia_NitrogenFixation\R_outputs\EAT_50PercentFilter_NitrogenFixation_UpShiftData_ZM4tag.csv";
+            var file = @"P:\EAT_20190926_Zymomona\ISPH_ISPG_OE_Mehmet\EclipseRuns\combined_ZM4tag\txt\EAT_50percentfiltered_proteinGroups_ZM4tag.csv";
             var reader = new CsvReader(new StreamReader(file), true, ',');
 
             var headers = reader.GetFieldHeaders();
@@ -28,7 +28,7 @@ namespace ImputeMissing_OverExpression_Values
 
                 // h3k spreadsheet logic
                 //if (header.Contains("LFQ intensity"))
-                if (header.Contains("0") || header.Contains("5") || header.Contains("15") || header.Contains("30") || header.Contains("60") || header.Contains("120") || header.Contains("NH4") || header.Contains("N2")) //|| header.Contains("N2-120"))
+                if (header.Contains("IspG") || header.Contains("IspH") || header.Contains("WT")) //
                 {
                     replicates.Add(new Replicate(header, reader.GetFieldIndex(header)));
                     //Console.WriteLine(replicates);
@@ -101,7 +101,7 @@ namespace ImputeMissing_OverExpression_Values
 
             // now write out results file
             // two files, one summarizing the cutoffs for each condition
-            var outputPath = @"H:\Projects\Proteomics\Zymomona\Martein,Julia_NitrogenFixation\R_outputs\NitrogenFixation_Upshift_ZM4tag_imputation_cutoffs.csv";
+            var outputPath = @"P:\EAT_20190926_Zymomona\ISPH_ISPG_OE_Mehmet\EclipseRuns\combined_ZM4tag\txt\Zymo_OE_ZM4tag_imputation_cutoffs.csv";
             var writer = new StreamWriter(outputPath);
 
             // write headers
@@ -116,7 +116,7 @@ namespace ImputeMissing_OverExpression_Values
             writer.Dispose();
 
             // write out file with imputed values
-            outputPath = @"H:\Projects\Proteomics\Zymomona\Martein,Julia_NitrogenFixation\R_outputs\NitrogenFixation_UpshiftImputed_ZM4tag_proteinGroups.csv";
+            outputPath = @"P:\EAT_20190926_Zymomona\ISPH_ISPG_OE_Mehmet\EclipseRuns\combined_ZM4tag\txt\Zymo_OE_ZM4tag_proteinGroups.csv";
             writer = new StreamWriter(outputPath);
 
             // write headers

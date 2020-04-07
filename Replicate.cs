@@ -31,25 +31,14 @@ namespace ImputeMissing_OverExpression_Values
             }
             */
 
-            var parsedHeader = header.Split('-');
-
-            if (!parsedHeader[1].Equals("NH4"))
-            {
-                this.conditionName = parsedHeader[1] + "_" + parsedHeader[3];
-                this.replicateName = parsedHeader[2];
+            var parsedHeader = header.Split('_');
+                this.conditionName = parsedHeader[0];
+                this.replicateName = parsedHeader[1];
                 //this.replicateName = parsedHeader[0];
 
                 this.lfqValues = new List<LfqValues>();
                 this.readerIndex = readerIndex;
-            }
-            else
-            {
-                this.conditionName = parsedHeader[1] + "_" + parsedHeader[3];
-                this.replicateName = parsedHeader[2];
-
-                this.lfqValues = new List<LfqValues>();
-                this.readerIndex = readerIndex;
-            }
+        
 
 
 
